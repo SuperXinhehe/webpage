@@ -1,0 +1,160 @@
+@import url("bootstrap.min.css");
+
+body {
+  padding-bottom: 40px;
+  background-image: url("/images/back.jpg");
+  padding-top:25px;
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+white-space:pre;
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+}
+.blog-container {
+  -webkit-box-shadow: 2px 6px 36px -12px rgba(105,104,99,1);
+  -moz-box-shadow: 2px 6px 36px -12px rgba(105,104,99,1);
+  box-shadow: 2px 6px 36px -12px rgba(105,104,99,1);
+  padding-top:20px;
+  padding-left:25px;
+  padding-right:25px;
+  padding-bottom: 35px;
+  background-color: white;
+}
+
+.clickable-row:hover {
+  background-color:#F0F0F0;
+  cursor:pointer;
+}
+
+.blog-body {
+  background-color: #F0F0F0;
+  padding: 10px;
+  font-family:Calibri;
+  font-size:15px;
+}
+
+.outer-grid {
+  width:100%;
+  position:relative;
+  margin:0 auto;
+  background-color: #F0F0F0;
+  display:inline-block;
+}
+
+.image-grid {
+  margin:1.66%;
+  width:30%;
+  display:table-cell;
+  overflow:hidden;
+  height:180px;
+  padding:5px;
+}
+
+.image-li {
+  float:left;
+  display:table-cell;
+  width:33.33%;
+  height:33.33%;
+}
+.image-li:hover {
+  opacity: 0.6; filter: alpha(opacity=40);
+  cursor:pointer;
+}
+
+.display-image {
+  position:relative;
+  width:100%;
+  vertical-align: middle;
+  text-align:center;
+  background-color: #F0F0F0;
+}
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper > .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+.navbar-wrapper .navbar {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.navbar-wrapper .navbar .container {
+  width: auto;
+}
+
+.detailBox {
+	postiion:relative;
+    border:1px solid #bbb;
+    padding-left:15px;
+    padding-right:15px;
+}
+.titleBox {
+    background-image:url(/images/banner1.jpg);
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+/*comment box*/
+.commentBox {
+    padding:10px;
+    border-top:1px dotted #bbb;
+}
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+    width:80%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+    width:18%;
+}
+.actionBox .form-group * {
+    width:100%;
+}
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    max-height:200px;
+    overflow:auto;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px;
+}
+.commentList li > div {
+    display:table-cell;
+}
+.commenterImage {
+    width:30px;
+    margin-right:5px;
+    height:100%;
+    float:left;
+}
+.commenterImage img {
+    width:100%;
+    border-radius:50%;
+}
+.commentText p {
+    margin:0;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+    padding:10px;
+}
+

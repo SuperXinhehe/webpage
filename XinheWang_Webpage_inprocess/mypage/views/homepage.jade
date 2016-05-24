@@ -1,0 +1,156 @@
+doctype html
+html(lang="en")
+ head 
+  title The Heap Space
+  //link(ref="stylesheet",href="/stylesheets/stylesheet.css")
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js").
+  script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js").
+  link(rel="stylesheet",href="/stylesheets/bootstrap.min.css").
+  link(rel="icon",href="/icon/favicon.ico").
+
+ // NAVBAR
+ //-----------------------------------------------------------------
+
+ body(style="background:white")
+  div(class="navbar-wrapper")
+   div(class="container")
+    nav(class="navbar navbar-inverse navbar-static-top")
+     div(class="container")
+      div(class="navbar-header")
+       button(class="navbar-toggle collapsed",data-toggle="collapse",data-target="#navbar",aria-expanded="false",aria-controls="navbar")
+        span(class="sr-only") Toggle navigation
+        span(class="icon-bar")
+        span(class="icon-bar")
+        span(class="icon-bar")
+       a(class="navbar-brand",href="#") Flamingo Circle
+      div(id="navbar",class="navbar-collapse collapse")
+       ul(class="nav navbar-nav")
+        li(class="active") 
+         a(href="#") Home 
+        li 
+         a(href="#project") Project
+        li 
+         a(href="/theheapspace/blog/page=1") Blog
+        li(class="dropdown") 
+         a(href="#",class="dropdown-toggle" data-toggle="dropdown" role="button",aria-expanded="false") About
+          span(class="caret")
+         ul(class="dropdown-menu",role="menu")
+          li
+           a(href="/theheapspace/aboutme") about Xinhe (Tina)
+           a(href="#") Resume
+          li(class="divider")
+          li(class="dropdown-header") Friends
+          li
+           a(href="http://www.baijintan.com") Jintan Bai (Mark)
+          li(class="divider")
+          li(class="dropdown-header") Other Links
+          li
+           a(href="#timeline") TimeLine
+          li
+           a(href="/theheapspace/notes/page=1") Notes
+
+       ul(class="nav navbar-nav navbar-right")
+        li 
+         a(href="/theheapspace/login") Login
+
+  div(id="myCarousel",class="carousel slide",data-ride="carousel")
+   //- indicators -//
+   ol(class="carousel-indicators")
+    li(data-target="#myCarousel",data-slide-to="0" class="active")
+    li(data-target="#myCarousel",data-slide-to="1" class="active")
+    li(data-target="#myCarousel",data-slide-to="2" class="active")
+    li(data-target="#myCarousel",data-slide-to="3" class="active")
+   div(class="carousel-inner",role="listbox")
+    div(class="item active")
+     img(class="first-slide",src="images/twoheads.jpg",alt="first slide")
+     div(class="container")
+      div(class="carousel-caption")
+       h1(style="color:white") Science and Art
+       p Welcome you, my friend. Please leave your messages and your likes!
+       p 
+        a(class="btn btn-lg btn-primary", href="/signup", role="button") Sign Up Today
+
+    div(class="item")
+     img(class="second-slide",src="images/einstein.jpg")
+     div(class="container")
+      div(class="carousel-caption")
+       h1(style="color:white") Albert Einstein
+       p The ideals which have lighted my way , and time after time have given me new courage to face life cheerfully have been kindness , beauty and truth.- Albert Einstein 
+       p
+        a(class="btn btn-lg btn-primary",href="#",role="button") Browse Journal
+
+    div(class="item")
+     img(class="third-slide",src="images/iowa4.jpg")
+     div(class="container")
+      div(class="carousel-caption")
+       h1(style="color:white") the University of Iowa
+       p  Go Hawks!
+       p
+        a(class="btn btn-lg btn-primary",href="#",role="button") Learn more
+
+    div(class="item")
+     img(class="fourth-slide",src="images/data1.jpg")
+     div(class="container")
+      div(class="carousel-caption")
+       h1(style="color:white") Data Science and Big Data
+       p  Browsing Paper Engine
+       p
+        a(class="btn btn-lg btn-primary",href="#",role="button") Learn more
+ 
+   a(class="left carousel-control",href="#myCarousel",role="button",data-slide="prev") 
+    span(class="glyphicon glyphicon-chevron-left",aria-hidden="true")
+    span(class="sr-only") Previous
+   a(class="right carousel-control",href="#myCarousel",role="button",data-slide="next")
+    span(class="glyphicon glyphicon-chevron-right",aria-hidden="true")
+    span(class="sr-only") Next
+
+  //three links 
+  div(class="container marketing")
+   div(class="row")
+    div(class="col-lg-4")
+     a(href="theheapspace/timeline")
+      img(class="img-thumbnail",src="images/grid1.jpg",width="300",height="300",style="display:block;margin:0 auto")
+     a(href="theheapspace#")
+      h2(style="text-align:center") TimeLine
+     p(style="text-align:center") There are some things that would better be remembered.
+    div(class="col-lg-4")
+     a(href="theheapspace/gooddays")
+      img(class="img-thumbnail",src="images/grid2.jpg",width="300",height="300",style="display:block;margin:0 auto")
+     a(href="theheapspace/gooddays")
+      h2(style="text-align:center") Best Memory at RuJiaZhuang
+     p(style="text-align:center") Let us hand in hand advance together, flying dream, dream for struggle!
+    div(class="col-lg-4")
+     a(href="theheapspace/notebook")
+      img(class="img-thumbnail",src="images/grid3.jpg",width="300",height="300",style="display:block;margin:0 auto")
+     a(href="theheapspace/gooddays")
+      h2(style="text-align:center") My Note Book
+     p(style="text-align:center") I have been thinking if there is a kind of note book could keep those beautiful codes.
+
+  hr(class="featurette-divider")
+  div(class="row featurette")
+   div(class="col-md-7", style="padding-left:30px;")
+    h2(class="featurette-heading") Xinhe, 
+     span(class="text-muted") loves Computer Science and Statistics
+    p(class="lead") I have been passionate about computer science, statistics, data analytics as well as league of legends! I am still trying to find a more specific field I can dig more into it and I am trying to be a statistician, a computer scientist or a data scientist. I am still on the way... 
+    p(class="lead") I appreciate for my family's Support, my friends, Dr. Michealson, Prof. DeCook, Prof Ted... as well as Bootstrap and Stack Overflow for building this website.
+   div(class="col-md-5")
+    img(class="featurette-image img-responsive center-block", src="images/readinggirl.jpg",href="theheapspace/timeline")
+
+  hr(class="featurette-divider")
+  div(class="row featurette")
+   div(class="col-md-7 col-md-push-5", style="padding-left:30px;")
+    h2(class="featurette-heading") About this Website, 
+     span(class="text-muted") an inspiration
+    p(class="lead") I got a bachelor degree in statistics (computing focused) from the University of Iowa. This website built during the summer that I just graduate from UIOWA and preparing for my study at computer science master program at University of Washington.
+    p(class="lead") This website is mainly for personal use, which is an place to display my thoughts brought by stats and computer science. And this leads me to discover the front-end and back-end of the web development.
+    p(class="lead") (this image is from Microsoft)
+   div(class="col-md-5 col-md-pull-7",style="padding-top:70px;")
+    img(class="featurette-image img-responsive center-block",style="height:325px",src="images/girlscode.jpg")
+  
+  hr(class="featurette-divider")
+  footer
+   p(class="pull-right")
+    a(href="#") Back to top
+   p &copy; 2015 Xinhe(Tina) Wang &middot; Privacy &middot; Contact Me: xinhehe8612@gmail.com
+
+

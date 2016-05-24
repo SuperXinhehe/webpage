@@ -1,0 +1,99 @@
+doctype html
+html(lang="en")
+ head 
+  title The Heap Space
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js").
+  script(src="/javascripts/fileinput.min.js").
+  script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js").
+  script(src="/javascripts/notes.js").
+  script(src="/javascripts/highlight.pack.js").
+  //script(src="/javascripts/fileinput.min.js").
+  script hljs.initHighlightingOnLoad();
+  link(rel="stylesheet",href="/stylesheets/notedisplay.css").
+  link(rel="stylesheet",href="/stylesheets/bootstrap.min.css").
+  link(rel="icon",href="/icon/favicon.ico").
+  link(rel="stylesheet",href="/stylesheets/fileinput.min.css").
+  link(rel="stylesheet",href="/stylesheets/ad_blog.css").
+  link(rel="stylesheet",href="/stylesheets/xcode.css").
+  //link(rel="stylesheet",href="/stylesheets/github.css").
+  
+
+ // NAVBAR
+ //-----------------------------------------------------------------
+ body(style="background-image:url('images/#{usr.back_pic}')")
+  div(class="navbar navbar-findcond navbar-fixed-top")
+   div(class="container")
+    div(class="navbar-header")
+     button(type="button",class="navbar-toggle collapsed",data-toggle="collapse",data-target="#navbar")
+       span(class="sr-only") Toggle Navigation
+       span(class="icon-bar")
+       span(class="icon-bar")
+       span(class="icon-bar")
+      a(class="navbar-brand",href='/theheapspace/login=ad/as=#{usr.usr_name}/notes/page=1') Notes
+    div(class="collapse navbar-collapse",id="navbar")
+     ul(class="nav navbar-nav navbar-right")
+      li(class="dropdown")
+       a(href="#",class="dropdown-toggle",data-toggle="dropdown",role="button",aria-expanded="false")
+        i(class="fa fa-fw fa-bell-o",id="usrname") Welcome back, #{usr.usr_name}
+       ul(class="dropdown-menu",role="menu")
+        li 
+         a(href="#")
+          i(class="fa fa-fw fa-thumbs-o-up") #{usr.class}
+        li
+         div(style="overflow:hidden;width:100px;height:120px;text-align:center")
+          img(src='/images/#{usr.profile_pic}',style="width:100%;margin:0 auto;")
+      li(class="active")  
+       a(href="#") Logout
+
+  div(class="container",style="padding-top:50px")
+   div(class="col-md-10")
+    div(class="note-content")
+     div(class="update-bar")
+      p(style="text-align:left",id="noteid") Task # #{note.note_id}
+     div(class="note-info")
+      h4 #{note.note_name}
+      p note created by #{usr.usr_name} on #{note.time}
+      hr(style="display:block;border-color:#E3E3E3")
+      p Source: #{note.source}
+      p Tags:
+       &nbsp;
+       - each tag, i in note.tags
+        a(href='theheapspace/tags/#{tag.tagname}',style="text-decoration:none")
+         span(class='#{tag.tagspan}') #{tag.tagname}
+         &nbsp;
+      hr(style="display:block;border-color:#E8E8E8")
+      h5 Description:
+      !{note.description}
+     div(class="update-bar",style="padding-top:10px")
+       button(type="button",class="note-button update-button")
+        span(class="glyphicon glyphicon-pencil",aria-hidden="true") Update
+       &nbsp;
+       button(type="button",class="note-button")
+        span(class="glyphicon glyphicon-eye-open",aria-hidden="true") Watch
+     
+     if (updates != null) 
+      - var counter = 0;
+      each u, i in updates 
+       - counter++;
+       div(class="updates")
+        p(style="color:gray;display:inline") Updated by #{u.usr_name} on #{u.update_date}
+        - if(u.usr_name == usr.usr_name) {
+         button(type="button",class="note-button edit-button",style="float:right",id='#{u.updateid}')
+          span(class="glyphicon glyphicon-erase") Edit
+        - }
+        p(style="display:inline;float:right;color:#336EA9") # #{counter}
+        hr(style="display:block;")
+        div(id='#{u.updateid}update')
+         p !{u.content} 
+         if(u.originalname != null && u.originalname != '')
+          a(href='/files/name=#{u.originalname}') Click to read: #{u.originalname}
+      div(class="update-bar",style="padding-top:10px")
+       button(type="button",class="note-button update-button")
+        span(class="glyphicon glyphicon-pencil",aria-hidden="true") Update
+       &nbsp;
+       button(type="button",class="note-button")
+        span(class="glyphicon glyphicon-eye-open",aria-hidden="true") Watch
+
+     div(id="new-div")
+

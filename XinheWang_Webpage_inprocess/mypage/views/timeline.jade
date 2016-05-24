@@ -1,0 +1,101 @@
+doctype html
+html(lang="en")
+ head
+  title TimeLine 
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+  script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js").
+  script(src="/javascripts/bootstrap-select.js").
+  link(rel="stylesheet",href="/stylesheets/bootstrap.min.css").
+  link(rel="icon",href="/icon/favicon.ico").
+  link(rel="stylesheet",href="/stylesheets/journalbstrap.css").
+  link(rel="stylesheet",href="/stylesheets/timeline.css").
+  link(rel="stylesheet",href="/stylesheets/bootstrap-select.css").
+
+ body
+  div(class="container")
+   div(class="page-header")
+    - var now = new Date();
+    h1(id="timeline") Timeline
+    p(style="display:inline;float:right") Visited on: #{now} 
+    br
+   ul(class="timeline")
+    li(id="newtimeline")
+     div(class="timeline-badge info")
+      i(class="glyphicon glyphicon-edit")
+     div(class="timeline-panel")
+      div(class="timeline-heading")
+       h4 What is in your mind?
+       hr
+      div(class="timeline-body")
+       form(role="form")
+        div(class="form-group")
+         label(for="tweet_title") Title:
+         input(class="form-control",id="tweet_title")
+        div(class="form-group")
+         label(for="category") Choose Category:
+         br
+         select(class="selectpicker",data-style="btn-primary",data-width="auto",id="category")
+          option(data-icon="glyphicon glyphicon-comment") Tweetie
+          option(data-icon="glyphicon glyphicon-check") QandA
+          option(data-icon="glyphicon glyphicon-list-alt") Quick Notes 
+          option(data-icon="glyphicon glyphicon-map-marker") Location
+          option(data-icon="glyphicon glyphicon-link") Link
+          option(data-icon="glyphicon glyphicon-calendar") Event&Calendar
+        div(class="form-group")
+         label(for="tweet_content") Content:
+         textarea(class="form-control",rows="5",id="tweet_textarea")
+        div(class="form-group")
+         button(type="submit",class="btn btn-info",style="float:right") Submit
+         
+    - var counter = 0;
+    - var cl;
+    - var year;
+    - var month;
+    - var day;
+    - each c, i in contents
+     - cl = 'timeline';
+     - counter++;
+     - var num = counter%2-1;
+     - if(num >= 0) {
+       - cl = 'timeline-inverted';
+     - }
+     - if(counter<=1) {
+        - year = c.year
+        - month = c.month
+        - day = c.day
+        li(style="height:50px",id='#{counter}')
+          span(class="date")
+           span(class="day",style="font-size:10px;display:inline-block") #{day}
+            sup TH
+           span(class="month",style="font-size:18px;text-align:center;display:inline-block") #{month}
+           span(class="year",style="font-size:10px;display:inline-block") #{year}
+     - }
+     - else{
+       - if (year != c.year || day != c.day || month != c.month) {
+         - year = c.year
+         - month = c.month
+         - day = c.day
+         li(style="height:50px",id='#{counter}')
+           span.date
+            span(class="day",style="font-size:10px;display:inline-block") #{day}
+             sup th
+            span(class="month",style="font-size:18px;text-align:center;display:inline-block") #{month}
+            span(class="year",style="font-size:10px;display:inline-block") #{year}
+       - }
+     - }
+     li(class='#{cl}',id='#{c.tweet_id}')
+      div(class="timeline-badge warning")
+       a(href="/theheapspace/timeline/#{c.category}")
+        i(class='#{c.badge}')
+      div(class="timeline-panel")
+       - if (c.tweet_title != null) {
+        div(class="timeline-heading")
+         h4(class="timeline-title") !{c.tweet_title}
+        hr
+       - }
+       div(class="timeline-body")
+        p !{c.tweet_content}
+        hr
+        p 
+         small(class="text-muted") 
+          i(class="glyphicon glyphicon-time") Posted by #{c.usr_name}       

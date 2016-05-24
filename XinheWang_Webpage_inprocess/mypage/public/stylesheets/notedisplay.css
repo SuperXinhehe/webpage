@@ -1,0 +1,88 @@
+
+.btn-file {
+  background-color: #F7F3E8;
+}
+
+p {
+	font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+  font-size:110%;
+}
+
+h2,h3,h4,h5 {
+	font-family: Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif !important;
+}
+div.update-bar {
+  text-align: right;
+  padding-bottom:10px;
+  font-family: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+  font-size:12px;
+}
+div.updates {
+  padding-top:20px;
+}
+
+div.note-info {
+  background-color: #E8EFED;
+  border: #D5D5D5 solid 1px;
+  padding:10px;
+}
+
+div.note-content {
+  padding:10px;
+  border: #D5D5D5 solid 1px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 3px 14px 0px rgba(237,236,230,1);
+  -moz-box-shadow: 0px 3px 14px 0px rgba(237,236,230,1);
+  box-shadow: 0px 3px 14px 0px rgba(237,236,230,1);
+}
+
+div.sider {
+  position:relative;
+  top:30px;
+}
+
+.note-button {
+  border: none;
+  background-color: #FFFFFF;
+  color:#336EA9;
+}
+
+.note-textbox {
+  border:#D5D5D5 solid 1px;
+  background-color: #F7F3E8;
+}
+
+.btn-file {
+	border:none;
+	background-color: transparent;
+}
+.btn-file:hover {
+	background-color: transparent;
+}
+
+.submitbt {
+	float:right;
+}
+
+div#fileloader {
+  height: 40px;
+  margin: 3px;
+  padding-top:5px;
+  overflow:hidden;
+}
+
+.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
+.navbar-findcond a { color: #f14444; }
+.navbar-findcond ul.navbar-nav a { color: #f14444; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
+.navbar-findcond ul.navbar-nav a:hover,
+.navbar-findcond ul.navbar-nav a:visited,
+.navbar-findcond ul.navbar-nav a:focus,
+.navbar-findcond ul.navbar-nav a:active { background: #fff; }
+.navbar-findcond ul.navbar-nav a:hover { border-color: #f14444; }
+.navbar-findcond li.divider { background: #ccc; }
+.navbar-findcond button.navbar-toggle { background: #f14444; border-radius: 2px; }
+.navbar-findcond button.navbar-toggle:hover { background: black; }
+.navbar-findcond button.navbar-toggle > span.icon-bar { background: #fff; }
+.navbar-findcond ul.dropdown-menu { border: 0; background: #fff; border-radius: 4px; margin: 4px 0; box-shadow: 0 0 4px 0 #ccc; }
+.navbar-findcond ul.dropdown-menu > li > a { color: #444; }
+.navbar-findcond ul.dropdown-menu > li > a:hover { background: #f14444; color: #fff; }

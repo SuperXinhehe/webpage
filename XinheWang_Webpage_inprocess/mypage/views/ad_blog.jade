@@ -1,0 +1,128 @@
+doctype html
+html(lang="en")
+ head 
+  title The Heap Space
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js").
+  script(src="/javascripts/myblog.js").
+  script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js").
+  link(rel="stylesheet",href="/stylesheets/bootstrap.min.css").
+  link(rel="icon",href="/icon/favicon.ico").
+  link(rel="stylesheet",href="/stylesheets/blogstyle.css").
+  link(rel="stylesheet",href="/stylesheets/ad_blog.css").
+
+ // NAVBAR
+ //-----------------------------------------------------------------
+ body(style='#{usr.back_pic}')
+  div(class="navbar-wrapper")
+   div(class="container")
+    nav(class="navbar navbar-inverse navbar-static-top")
+     div(class="container")
+      div(class="navbar-header")
+       button(class="navbar-toggle collapsed",data-toggle="collapse",data-target="#navbar",aria-expanded="false",aria-controls="navbar")
+        span(class="sr-only") Toggle navigation
+        span(class="icon-bar")
+        span(class="icon-bar")
+        span(class="icon-bar")
+       a(class="navbar-brand",href="/theheapspace/login=ad/blog/page=1") People's Blog
+      div(id="navbar",class="navbar-collapse collapse")
+       ul(class="nav navbar-nav")
+        li(class="active") 
+         a(href="/theheapspace") Home 
+        li 
+         a(href="#project") Project
+        li 
+         a(href="/theheapspace/login=ad/blog/page=1") Blog
+        li(class="dropdown") 
+         a(href="#",class="dropdown-toggle" data-toggle="dropdown" role="button",aria-expanded="false") About
+          span(class="caret")
+         ul(class="dropdown-menu",role="menu")
+          li
+           a(href="/theheapspace/aboutme") about Xinhe (Tina)
+           a(href="#") Resume
+          li(class="divider")
+          li(class="dropdown-header") Friends
+          li
+           a(href="/theheapspace/jintan") Jintan Bai (Mark)
+          li(class="divider")
+          li(class="dropdown-header") Other Links
+          li
+           a(href="#leagueoflegend") TimeLine
+          li
+           a(href="/theheapspace/login=ad/as=#{usr.usr_name}/notes/page=1") Notes
+
+       ul(class="nav navbar-nav navbar-right")
+        li 
+         a(href="/theheapspace/blog/page=1") Logout
+
+  div(class="container")
+   div(class="row",id="top-banner",style="background-image: url('/images/#{usr.banner_pic}')")
+    div(class="profile-div")
+     div(class='profile-pic')
+      img(src="/images/#{usr.profile_pic}",style="width:100%;")
+     div(class="usr-name")
+      h3(style="color:white") #{usr.usr_name}
+      p #{usr.pf_intro}
+    div(class="tab-banner")
+     div(class="tabbable-panel")
+      div(class="tabbable-line")
+       ul(class="nav nav-tabs")
+        li(class="active")
+         a(href="/theheapspace/blog/login=ad/page=1",data-toggle="tab") Home
+        li
+         a(href="/theheapspace/blog/login=ad/photo/page=1",data-toggle="tab") Photo Gallary
+        li
+          a(href="http://localhost:3000/theheapspace/login=ad/as="+escape(usr.usr_name)+"/notes/page=1",data-toggle="tab") Notes
+        li
+         a(href="/theheapspace/blog/login=ad/callendar",data-toggle="tab") Calender
+        li
+         a(href="/theheapspace/blog/login=ad/projects/",data-toggle="tab") Projects 
+
+   
+   div(class="row")
+    div(class="col-md-8")
+     - each blog, i in blogs
+      div(class="blog-container",id='#{blog.blog_id}')
+       h2(style="font-family:Optima") #{blog.blog_h2}
+        h3(style="font-family:Optima") #{blog.blog_h3}
+       if blog.blog_body != null
+        div(class="blog-body")
+         p #{blog.blog_body}
+       if blog.attachment_type == "paper"
+        div
+         a(href='/papers/#{blog.attachment_name}.pdf')
+          p Click to Read: #{blog.attachment_name}
+       else if blog.attachment_type == "code"
+        div
+         a(href='/code/#{blog.attachment_name}')
+          p Click to Read: #{blog.attachment_name}
+
+       div
+        p Posted on #{blog.posttime}
+         &nbsp;
+         span(class="glyphicon glyphicon-user")
+          a(href='#{blog.website}') #{blog.usr_name}
+         &nbsp;
+         button(class="likes",type="button",style="background-color:Transparent;border:none") 
+          span(class="glyphicon glyphicon-heart") 
+          div(class="numbers",style="float:right") #{blog.numberlikes}
+
+       div
+        p Tags:
+         &nbsp;
+         - each t, j in blog.tags
+          a(href='theheapspace/blog/tags/#{t.tagname}',style="text-decoration:none")
+           span(class='#{t.tagspan}') #{t.tagname}
+          &nbsp;
+       
+       if blog.images != null
+         div(class="display-image",id="display-image#{blog.blog_id}")
+         div(class="outer-grid")
+          - each image, i in blog.images
+           li(class="image-li")
+            div(class="image-grid")
+             img(src='/images/#{image.picname}',height='100%',width='100%',class="image")
+ 
+      .row
+      hr
+    div(class="col-md-4")

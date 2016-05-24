@@ -1,0 +1,23 @@
+$("#addcomments").replaceWith("<button class='btn btn-default' id='addcomments' onclick='addComments()' type='button'>Add<span class='glyphicon glyphicon-remove' style='color:red'></span></button>");
+
+
+
+ if($("#commentbutt").hasClass("in"))
+ {
+ 	$("#soh").replaceWith("<button class='btn btn-info' data-toggle='collapse' data-target='#commentbutt' style='float:right' id='soh' aria-expanded='true'>Hide Comments</button>")
+ }
+ else
+ {
+ 	$("#soh").replaceWith("<button class='btn btn-info collapsed' data-toggle='collapse' data-target='#commentbutt' style='float:right' id='soh' aria-expanded='false'>Show Comments</button>")
+
+ }
+
+  if($("#commentbutt").hasClass("in"))
+ {
+ 	$("#soh").replaceWith("<button class='btn btn-info' data-toggle='collapse' data-target='#commentbutt' style='float:right' id='soh' aria-expanded='true'>Hide Comments</button>")
+ }
+ else
+ {
+ 	$("#soh").replaceWith("<button class='btn btn-info collapsed' data-toggle='collapse' data-target='#commentbutt' style='float:right' id='soh' aria-expanded='false'>Show Comments</button>")
+
+ }

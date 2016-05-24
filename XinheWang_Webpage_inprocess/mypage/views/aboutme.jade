@@ -1,0 +1,48 @@
+doctype html
+html(lang="en")
+ head 
+  title The Heap Space
+  //link(ref="stylesheet",href="/stylesheets/stylesheet.css")
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js").
+  script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js").
+  link(rel="stylesheet",href="/stylesheets/bootstrap.min.css").
+  link(rel="icon",href="/icon/favicon.ico").
+
+ // NAVBAR
+ //-----------------------------------------------------------------
+
+ body
+  div(class="navbar-wrapper")
+   div(class="container")
+    nav(class="navbar navbar-inverse navbar-static-top")
+     div(class="container")
+      div(class="navbar-header")
+       button(class="navbar-toggle collapsed",data-toggle="collapse",data-target="#navbar",aria-expanded="false",aria-controls="navbar")
+        span(class="sr-only") Toggle navigation
+        span(class="icon-bar")
+        span(class="icon-bar")
+        span(class="icon-bar")
+       a(class="navbar-brand",href="/theheapspace/aboutme") About Xinhe
+      div(id="navbar",class="navbar-collapse collapse")
+       ul(class="nav navbar-nav")
+        li(class="active") 
+         a(href="/theheapspace") Home 
+        li 
+         a(href="#project") Project
+        li 
+         a(href="/theheapspace/myblog") Blog
+        li(class="dropdown") 
+         a(href="#",class="dropdown-toggle" data-toggle="dropdown" role="button",aria-expanded="false") About
+          span(class="caret")
+         ul(class="dropdown-menu",role="menu")
+          li
+           a(href="/theheapspace/aboutme") about Xinhe (Tina)
+           a(href="#") Resume
+          li(class="divider")
+          li(class="dropdown-header") Friends
+          li
+           a(href="http://www.baijintan.com") Jintan Bai (Mark)
+          li(class="divider")
+          li(class="dropdown-header") Interests
+          li
+           a(href="#leagueoflegend") League of Legend

@@ -1,0 +1,134 @@
+doctype html
+html(lang="en")
+ head 
+  title The Heap Space
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js").
+  script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js").
+  script(src="/javascripts/myblog.js").
+  link(rel="stylesheet",href="/stylesheets/bootstrap.min.css").
+  link(rel="icon",href="/icon/favicon.ico").
+  link(rel="stylesheet",href="/stylesheets/blogstyle.css").
+
+ // NAVBAR
+ //-----------------------------------------------------------------
+
+ body
+  div(class="navbar-wrapper")
+   div(class="container")
+    nav(class="navbar navbar-inverse navbar-static-top")
+     div(class="container")
+      div(class="navbar-header")
+       button(class="navbar-toggle collapsed",data-toggle="collapse",data-target="#navbar",aria-expanded="false",aria-controls="navbar")
+        span(class="sr-only") Toggle navigation
+        span(class="icon-bar")
+        span(class="icon-bar")
+        span(class="icon-bar")
+       a(class="navbar-brand",href="/theheapspace/myblog") People's Blog
+      div(id="navbar",class="navbar-collapse collapse")
+       ul(class="nav navbar-nav")
+        li(class="active") 
+         a(href="/theheapspace") Home 
+        li 
+         a(href="#project") Project
+        li 
+         a(href="/theheapspace/myblog") Blog
+        li(class="dropdown") 
+         a(href="#",class="dropdown-toggle" data-toggle="dropdown" role="button",aria-expanded="false") About
+          span(class="caret")
+         ul(class="dropdown-menu",role="menu")
+          li
+           a(href="/theheapspace/aboutme") about Xinhe (Tina)
+           a(href="#") Resume
+          li(class="divider")
+          li(class="dropdown-header") Friends
+          li
+           a(href="/theheapspace/jintan") Jintan Bai (Mark)
+          li(class="divider")
+          li(class="dropdown-header") Interests
+          li
+           a(href="#leagueoflegend") League of Legend
+  br
+  br
+  br
+  div(class="container")
+   div(class="row")
+    //-- Blog
+    div(class="col-md-8")
+     h1(class="page-header") Flamingo Loves Science
+      &nbsp;
+      small Be Loved, Dedicated, and Devoted
+     div(class="blog-container")
+      a(href="/papers/pagerank.pdf")
+       h2 The PageRank Citation Ranking:
+        h3 Bringing Order to the Web
+      p
+       a(href="/papers/pagerank.pdf") Paper to Read: 
+       small click to open the pdf file
+      p Post Posted on June 16th, 2015 at 6:00pm
+       span(class="glyphicon glyphicon-user")
+        a(href="/theheapspace/aboutme") Xinhe
+       &nbsp;
+       button(id="likes",type="button",style="background-color:Transparent;border:none") 
+        span(class="glyphicon glyphicon-heart",style="float:left")
+         div(id="numbers",style="float:right") 1
+
+      p tags:
+       a(href="theheapspace/myblog/tag/algorithm",style="text-decoration:none") 
+        span(class="label label-success") algorithm 
+        &nbsp;
+       a(href="theheapspace/myblog/tag/datascience",style="text-decoration:none")
+        span(class="label label-info") data science
+      button(class="btn btn-info",data-toggle="collapse",data-target="#commentbutt",style="float:right;padding-bottom:5px",id="soh") Hide Comments
+     .row
+     hr
+     div(class="collapse in",id="commentbutt",style="background-color:white")
+      div(class="detailBox")
+       div(class="titleBox")
+        label Comments
+        button(type="button",class="close",aria-hidden="true")&times;
+       div(class="commentBox")
+        p(class="taskDescription") The page rank algorithm behind the Google searching.
+       div(class="actionBox",id="commentlist")
+        ul(class="commentList")
+         li 
+          div(class="commenterImage")
+           img(src="/images/profile.jpg")
+          div(class="commentText")
+           p Thanks for sharing!! 
+           &nbsp;
+           span(class="date sub-text") on June 26th, 2015
+        form(class="form-inline",role="form")
+         div(class="form-group")
+          input(class="form-control",type="text",value="Your Comments",id="comments")
+         &nbsp;
+         div(class="form-group")
+          button(class="btn btn-default",id="addcomments",onclick="addComments()",type="button") Add 
+
+
+     .row
+     hr
+     div(class="blog-container")
+      h2 Thrift Shop -- Macklemore
+
+      p Post Posted on June 26th, 2015 at 12:08pm
+       &nbsp;
+       span(class="glyphicon glyphicon-user",style="color:pink")
+        a(href="/theheapspace/aboutme") Xinhe
+       &nbsp;
+       button(id="likes",type="button",style="background-color:Transparent;border:none") 
+        span(class="glyphicon glyphicon-heart",style="float:left") 
+         div(id="numbers",style="float:right") 1
+
+      p tags:
+       a(href="theheapspace/myblog/tag/music",style="text-decoration:none") 
+        span(class="label label-warning") music
+     .row
+     hr
+
+
+     ul(class="pager")
+      li(class="previous disabled")
+       a(href="#") &larr; Previous
+      li(class="next")
+       a(href="#") Next &rarr;
+     ul

@@ -1,0 +1,112 @@
+doctype html
+html(lang="en")
+ head 
+  title The Heap Space
+
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js").
+  script(src="/javascripts/myblog.js").
+  script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js").
+  script(src="/javascripts/notes.js").
+  link(rel="stylesheet",href="/stylesheets/bootstrap.min.css").
+  link(rel="icon",href="/icon/favicon.ico").
+  link(rel="stylesheet",href="/stylesheets/blogstyle.css").
+  link(rel="stylesheet",href="/stylesheets/ad_blog.css").
+
+
+ // NAVBAR
+ //-----------------------------------------------------------------
+ body
+  div(class="navbar-wrapper")
+   div(class="container")
+    nav(class="navbar navbar-inverse navbar-static-top")
+     div(class="container")
+      div(class="navbar-header")
+       button(class="navbar-toggle collapsed",data-toggle="collapse",data-target="#navbar",aria-expanded="false",aria-controls="navbar")
+        span(class="sr-only") Toggle navigation
+        span(class="icon-bar")
+        span(class="icon-bar")
+        span(class="icon-bar")
+       a(class="navbar-brand",href="/theheapspace/login=ad/blog/page=1") People's Blog
+      div(id="navbar",class="navbar-collapse collapse")
+       ul(class="nav navbar-nav")
+        li(class="active") 
+         a(href="/theheapspace") Home 
+        li 
+         a(href="#project") Project
+        li 
+         a(href="/theheapspace/login=ad/blog/page=1") Blog
+        li(class="dropdown") 
+         a(href="#",class="dropdown-toggle" data-toggle="dropdown" role="button",aria-expanded="false") About
+          span(class="caret")
+         ul(class="dropdown-menu",role="menu")
+          li
+           a(href="/theheapspace/aboutme") about Xinhe (Tina)
+           a(href="#") Resume
+          li(class="divider")
+          li(class="dropdown-header") Friends
+          li
+           a(href="/theheapspace/jintan") Jintan Bai (Mark)
+          li(class="divider")
+          li(class="dropdown-header") Other Links
+          li
+           a(href="#timeline") TimeLine
+          li
+           a(href="/theheapspace/notes/page=1") Notes
+
+       ul(class="nav navbar-nav navbar-right")
+        li 
+         a(href="/theheapspace/login") Login
+         
+  div(class="container")
+   div(class="row",id="top-banner",style="background-image: url('/images/banner2.jpg')")
+    div(class="profile-div")
+     div(class='profile-pic')
+      img(src="/images/default_guest_profilepic3.jpg",style="width:100%;")
+     div(class="usr-name")
+      h3(style="color:white",id="username") Welcome!
+      p Hi, Hi
+    div(class="tab-banner")
+     div(class="tabbable-panel")
+      div(class="tabbable-line")
+       ul(class="nav nav-tabs")
+        li
+         a(href="/theheapspace/blog/page=1",data-toggle="tab") Home
+        li
+         a(href="/theheapspace/login=ad/photo/page=1",data-toggle="tab") Photo Gallary
+        li(class="active")
+         a(href="/theheapspace/notes/page=1") Notes
+        li
+         a(href="/theheapspace/blog/callendar",data-toggle="tab") Calender
+        li
+         a(href="/theheapspace/blog/projects",data-toggle="tab") Projects 
+
+  div(class="container")
+   div(class="col-md-10")
+    table(class="table table-striped")
+     thead
+      tr
+       th #
+       th Topic 
+       th Last Date Updated
+       th Note Created By
+     tbody
+       - counter = 0;
+       - each note, i in notes
+        - counter++;
+        tr(id='#{note.note_id}',class="clickable-row",data-href="/theheapspace/notes/note=#{note.note_id}")
+          td #{counter}
+          td #{note.note_name}
+          td #{note.last_time_updated}
+          td #{note.usr_name}
+
+   div(class="col-md-2")
+    div(class="panel panel-default")
+     div(class="panel-heading",style="background-color:#FF6633;color:white")
+      p Tags
+     div(class="panel-body")
+      ul(class="tags")
+       - each tag, i in tags
+        li
+         a(href='/theheapspace/tags/#{tag.tag_name}',class='tag',style="text-decoration:none") #{tag.tag_name}
+
+      
