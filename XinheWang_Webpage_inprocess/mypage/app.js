@@ -321,8 +321,7 @@ app.get("/theheapspace/app=calender",function(req,res) {
 	 * @param {Object} credentials The authorization client credentials.
 	 * @param {function} callback The callback to call with the authorized client.
 	 */
-	function authorize(credentials, callback) {
-		console.log(credentials);
+	function authorize(credentials,callback) {
 	  var clientSecret = credentials.web.client_secret;
 	  var clientId = credentials.web.client_id;
 	  var redirectUrl = credentials.web.redirect_uris[0];
@@ -332,10 +331,10 @@ app.get("/theheapspace/app=calender",function(req,res) {
 	  // Check if we have previously stored a token.
 	  fs.readFile(TOKEN_PATH, function(err, token) {
 	    if (err) {
-	      getNewToken(oauth2Client, callback);
+	      return getNewToken(oauth2Client, callback);
 	    } else {
 	      oauth2Client.credentials = JSON.parse(token);
-	      callback(oauth2Client);
+	      return callback(oauth2Client);
 	    }
 	  });
 	}
@@ -386,13 +385,13 @@ app.get("/theheapspace/app=calender",function(req,res) {
 	 *
 	 * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
 	 */
-	function listEvents(cb,auth) {
+	function listEvents(auth,cb) {
 	  var calendar = google.calendar('v3');
 	  calendar.events.list({
 	    auth: auth,
 	    calendarId: 'primary',
 	    timeMin: (new Date()).toISOString(),
-	    maxResults: 10,
+	    maxResults: 20,
 	    singleEvents: true,
 	    orderBy: 'startTime'
 	  }, function(err, response) {
@@ -405,18 +404,17 @@ app.get("/theheapspace/app=calender",function(req,res) {
 	      console.log('No upcoming events found.');
 	    } else {
 	      var outs = [];
-	      var out = [];
-	      console.log('Upcoming 10 events:');
 	      for (var i = 0; i < events.length; i++) {
+	      	var out = {};
 	        var event = events[i];
 	        var start = event.start.dateTime || event.start.date;
-	        console.log('%s - %s', start, event.summary);
 	        out.date = start;
 	        out.e = event.summary;
 	        outs[i] = out;
 	      }
+	      // console.log(outs);
+	      cb(null,outs);
 	    }
-	    cb(null,outs);
 	  });
 	}
 		// Load client secrets from a local file.
@@ -428,15 +426,13 @@ app.get("/theheapspace/app=calender",function(req,res) {
 
 	  // Authorize a client with the loaded credentials, then call the
 	  // Google Calendar API.
-	  var auth = authorize(JSON.parse(content)) {
-		  	listEvents(function(err,doc) {
-		  	console.log(doc[0]);
-		  // 	res.render("ad_calender.jade",
-		  // 		{updates:doc[0]});
-		  // }),auth});
-			},auth);	  	
+	  authorize(JSON.parse(content),function(req,err) {
+	  	listEvents(req,function(err, doc) {
+	  	res.render("ad_calender.jade",{
+	  		events: doc
+	  	});
+	  })});	
 	  });  	
-	});
 });
 
 

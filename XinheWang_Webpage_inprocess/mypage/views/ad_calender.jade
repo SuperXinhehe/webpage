@@ -21,7 +21,7 @@ html(lang="en")
 
  // NAVBAR
  //-----------------------------------------------------------------
- body(style="background-image:url('images/#{usr.back_pic}')")
+ body
   div(class="navbar navbar-findcond navbar-fixed-top")
    div(class="container")
     div(class="navbar-header")
@@ -30,46 +30,33 @@ html(lang="en")
        span(class="icon-bar")
        span(class="icon-bar")
        span(class="icon-bar")
-      a(class="navbar-brand",href='/theheapspace/login=ad/as=#{usr.usr_name}/notes/page=1') Notes
+      a(class="navbar-brand",href='/theheapspace/notes/page=1') Notes
     div(class="collapse navbar-collapse",id="navbar")
      ul(class="nav navbar-nav navbar-right")
       li(class="dropdown")
        a(href="#",class="dropdown-toggle",data-toggle="dropdown",role="button",aria-expanded="false")
-        i(class="fa fa-fw fa-bell-o",id="usrname") Welcome back, #{usr.usr_name}
+        i(class="fa fa-fw fa-bell-o",id="usrname") Welcome back
        ul(class="dropdown-menu",role="menu")
         li 
          a(href="#")
-          i(class="fa fa-fw fa-thumbs-o-up") #{usr.class}
-        li
-         div(style="overflow:hidden;width:100px;height:120px;text-align:center")
-          img(src='/images/#{usr.profile_pic}',style="width:100%;margin:0 auto;")
+          i(class="fa fa-fw fa-thumbs-o-up")
       li(class="active")  
-       a(href="#") Logout
-
-  div(class="container",style="padding-top:50px")
+       a(href="#") Login
+  div(style="position:relative;float:center;height: 300px;overflow:hidden")
+   img(src = "/images/backtop.jpg",style="position:relative;") 
+  div(class="container")
    div(class="col-md-10")
-    div(class="note-content")
-     if (updates != null) 
-      - var counter = 0;
-      each u, i in updates 
-       - counter++;
-       div(class="updates")
-        p(style="color:gray;display:inline") Updated by #{u.usr_name} on #{u.update_date}
-        - if(u.usr_name == usr.usr_name) {
-         button(type="button",class="note-button edit-button",style="float:right",id='#{u.updateid}')
-          span(class="glyphicon glyphicon-erase") Edit
-        - }
-        p(style="display:inline;float:right;color:#336EA9") # #{counter}
-        hr(style="display:block;")
-        div(id='#{u.updateid}update')
-         p !{u.content} 
-         if(u.originalname != null && u.originalname != '')
-          a(href='/files/name=#{u.originalname}') Click to read: #{u.originalname}
-      div(class="update-bar",style="padding-top:10px")
-       button(type="button",class="note-button update-button")
-        span(class="glyphicon glyphicon-pencil",aria-hidden="true") Update
-       &nbsp;
-       button(type="button",class="note-button")
-        span(class="glyphicon glyphicon-eye-open",aria-hidden="true") Watch
-
-     div(id="new-div")
+    table(class="table table-striped")
+     thead
+      tr
+       th #
+       th Date
+       th Task 
+     tbody
+       - counter = 0;
+       - each ev, i in events
+        - counter++;
+        tr(id='#{counter}')
+          td #{counter}
+          td #{ev.date}
+          td #{ev.e}
