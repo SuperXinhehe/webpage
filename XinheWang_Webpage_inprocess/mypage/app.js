@@ -28,11 +28,56 @@ var RSS = require("rss");
 var Feed = require('feed');
 //var static = require('node-static');  
 //var file = new static.Server('./public');
+// power bi
+var powerbi = require("powerbi-api");
+var msrest = require("ms-rest");
+function renderPowerBI(info) {
+	// function f(err,info) {
+		var workspaceid = info.workspaceid;
+		var workspacename = info.workspacename;
+		var reportid = info.reportid;
+		var token = powerbi.PowerBIToken.createReportEmbedToken(workspacename,workspaceid,reportid);
+		var accesskey = info.accesskey;
+		console.log(token);
+		var jwt = token.generate(accesskey);
+		console.log(reportid);
+		// if (err) {
+		// 	console.log(err);
+		// }
+		// else {
+
+			// cb(null,jwt);	
+			return jwt;		
+		// }
+	// }
+};
+
 app.engine('jade', require('jade').__express);
 
 ////////////////////////////////////////////////
 // routes
 ///////////////////////////////////////////////
+app.get("/powerbi",function(req,res) {
+  var workspacename = 'powerbifrauddb';
+  var workspaceid = '83854e10-2dc7-47f1-bc44-560c2a2d42e4';
+  var reportid = '481c30ce-23bd-4291-a4ef-e1c243855512';
+  var accesskey = 'z5cMS9fycpx9OOqe3IUG3b8jCX848QlerSD5SVPZ9MZ/flHX7EWXRcshS2QW9qbOrkJFYKZZPTt3ApW3SlgmPA==';
+  info = {};
+  info.workspaceid = workspaceid;
+  info.workspacename = workspacename;
+  info.reportid = reportid;
+  info.accesskey = accesskey;
+  console.log(info);
+  var token = renderPowerBI(info);
+  console.log(token);
+ //  renderPowerBI(function(error,token){
+ //  	console.log(token);
+ //  res.render("powerbi.jade",
+ //   {token:token});
+ // },info);
+ res.render("powerbi.jade",{token:token,reportid:reportid});
+});
+
 app.get("/theheapspace",function(req,res){
  res.render("homepage.jade");
 });

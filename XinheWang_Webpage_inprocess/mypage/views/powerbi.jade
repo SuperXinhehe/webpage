@@ -1,0 +1,7 @@
+doctype html
+html(lang="en")
+ head
+  script(src="/javascripts/powerbi.js")
+  script(window.powerbi.accessToken='#{token}')
+ body
+  div(powerbi-type="report",powerbi-embed-url="https://embedded.powerbi.com/appTokenReportEmbed?reportId=#{reportid}",id="myReport",style="width=300px,height=300px")
