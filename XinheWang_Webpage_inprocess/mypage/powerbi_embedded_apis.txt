@@ -1,0 +1,9 @@
+power bi embedded apis
+
+1. list all the reports in a specific workspace name and workspace id
+headers:
+Content-Type: application/json
+Authorization: AppKey z5cMS9fycpx9OOqe3IUG3b8jCX848QlerSD5SVPZ9MZ/flHX7EWXRcshS2QW9qbOrkJFYKZZPTt3ApW3SlgmPA==
+
+api:
+https://api.powerbi.com/v1.0/collections/powerbifrauddb/workspaces/481c30ce-23bd-4291-a4ef-e1c243855512/reports

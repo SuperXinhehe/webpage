@@ -1,0 +1,13 @@
+mixin powerbidb(token,reportid)
+  block head
+   script(type="text/javascript").
+    function postActionReport(token) {
+     var accessToken = token;
+     if ("" == accessToken) return;
+     var m = {action: "loadReport",accessToken:accessToken};
+     var message = JSON.stringify(m);
+     iframe = document.getElementById("myReport");
+     iframe.contentWindow.postMessage(message,"*");
+    }
+   div
+     iframe(src="https://embedded.powerbi.com/appTokenReportEmbed?reportId=" + reportid,id="myReport",width="100%",height="1024px",onload="postActionReport('#{token}')")
